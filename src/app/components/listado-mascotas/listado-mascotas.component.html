@@ -1,13 +1,28 @@
-<div class="title">
-	<h1>Listado de Mascotas</h1>
-</div>
+	<div class="title">
+		<h1>Listado de Mascotas</h1>
+	</div>
 
-<div class="container">
 
-	<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+
+
+
+	<table mat-table [dataSource]="dataSource" >
+
+		<ng-container matColumnDef="tipo">
+			<th mat-header-cell *matHeaderCellDef>Tipo</th>
+			<td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+		</ng-container>
+
 		<ng-container matColumnDef="nombre">
 			<th mat-header-cell *matHeaderCellDef>Nombre</th>
 			<td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+		</ng-container>
+
+		<ng-container matColumnDef="duenio">
+			<th mat-header-cell *matHeaderCellDef>Dueño</th>
+			<td mat-cell *matCellDef="let element"> {{element.duenio}} </td>
 		</ng-container>
 
 		<ng-container matColumnDef="edad">
@@ -33,4 +48,3 @@
 		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 	</table>
-</div>

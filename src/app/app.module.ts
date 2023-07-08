@@ -15,8 +15,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Angular Material
 
-import { MatSliderModule } from '@angular/material/slider';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table'
+
 
 @NgModule({
 	declarations: [
@@ -29,8 +30,9 @@ import { MatTableModule } from '@angular/material/table'
 		BrowserModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
-		MatSliderModule,
-		MatTableModule
+		MatTableModule,
+		MatSidenavModule
+
 	],
 	providers: [],
 	bootstrap: [AppComponent]

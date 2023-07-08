@@ -1,19 +1,23 @@
-table{
-	width: 100%;
+table {
+  /* width: 50%; */
+	overflow-x: scroll;
 }
 
-.title{
-	padding: 2rem;
-	background-color: rgb(99, 99, 99);
-	text-align: center;
-	color: white;
+.title {
+  /* padding: 2rem; */
+	/* width: 100%; */
+  background-color: rgb(99, 99, 99);
+  text-align: center;
+  color: white;
 }
 
-.container{
-	margin: 0 20%;
-	background-color: aqua;
+.container {
+  /* margin: 2rem 0; */
+  background-color: aqua;
+	/* width: 100%; */
 }
 
-td, th{
-	width: 15%;
+td,
+th {
+  /* width: 14%; */
 }
