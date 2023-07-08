@@ -3,13 +3,25 @@
 html,
 body {
   height: 100%;
-	width: 100vw !important;
-	overflow: hidden !important;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 
 
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 
+}
+
+
+
+.title {
+  padding: 2rem;
+  background-color: rgb(99, 99, 99);
+  text-align: center;
+  color: white;
+}
+
+.container {
+	padding: 2rem;
+	
 }

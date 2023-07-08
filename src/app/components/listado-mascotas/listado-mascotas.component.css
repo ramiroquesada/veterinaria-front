@@ -1,23 +1,26 @@
 table {
-  /* width: 50%; */
-	overflow-x: scroll;
+  width: 100%;
+	margin: 1rem 0;
 }
 
-.title {
-  /* padding: 2rem; */
-	/* width: 100%; */
-  background-color: rgb(99, 99, 99);
-  text-align: center;
-  color: white;
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
 }
 
-.container {
-  /* margin: 2rem 0; */
-  background-color: aqua;
-	/* width: 100%; */
-}
+
 
 td,
 th {
-  /* width: 14%; */
+	text-align: center;
+	width: 12%;
+}
+
+.accionesBtn{
+	cursor: pointer;
+}
+
+.agregarBtn{
+	font-size: 12px;
+	line-height: 28px;
 }
