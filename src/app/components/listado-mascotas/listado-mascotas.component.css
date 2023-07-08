@@ -1,0 +1,19 @@
+table{
+	width: 100%;
+}
+
+.title{
+	padding: 2rem;
+	background-color: rgb(99, 99, 99);
+	text-align: center;
+	color: white;
+}
+
+.container{
+	margin: 0 20%;
+	background-color: aqua;
+}
+
+td, th{
+	width: 15%;
+}
