@@ -1,15 +1,18 @@
-.card{
-	gap: 1rem;
-	width: 100%;
-	padding: 5px;
+.card {
+  gap: 2rem;
+  width: 100%;
+  padding: 5px;
 }
-
 
 .mat-mdc-form-field {
   width: 100%;
-	margin: 0 5px;
+  margin: 0 5px;
 }
 
 .aceptarVolverContainer {
-	margin: 0 2rem;
+  margin: 0 2rem;
+}
+
+.mat-grid-tile {
+  overflow: visible;
 }

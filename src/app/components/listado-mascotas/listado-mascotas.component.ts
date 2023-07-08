@@ -2,10 +2,8 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { Mascota } from 'src/app/interfaces/mascota';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { trigger } from '@angular/animations';
 import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Action } from 'rxjs/internal/scheduler/Action';
 
 const listMascotas: Mascota[] = [
 	{
@@ -15,7 +13,7 @@ const listMascotas: Mascota[] = [
 		color: 'Dorado',
 		peso: 19,
 		tipo: 'Perro',
-		duenio: 'Midu'
+		duenio: 'Midu',
 	},
 	{
 		nombre: 'Pepe',
@@ -24,7 +22,7 @@ const listMascotas: Mascota[] = [
 		color: 'Azul',
 		peso: 12,
 		tipo: 'Perro',
-		duenio: 'Facu'
+		duenio: 'Facu',
 	},
 	{
 		nombre: 'Jorge',
@@ -33,7 +31,7 @@ const listMascotas: Mascota[] = [
 		color: 'Negro',
 		peso: 9,
 		tipo: 'Perro',
-		duenio: 'Roberto'
+		duenio: 'Roberto',
 	},
 	{
 		nombre: 'Juanjo',
@@ -42,7 +40,7 @@ const listMascotas: Mascota[] = [
 		color: 'Amarilo',
 		peso: 6,
 		tipo: 'Gato',
-		duenio: 'Julian'
+		duenio: 'Julian',
 	},
 	{
 		nombre: 'Miguel',
@@ -51,7 +49,7 @@ const listMascotas: Mascota[] = [
 		color: 'Rojo',
 		peso: 29,
 		tipo: 'Perro',
-		duenio: 'Santi'
+		duenio: 'Santi',
 	},
 	{
 		nombre: 'Milton',
@@ -60,20 +58,26 @@ const listMascotas: Mascota[] = [
 		color: 'Blanco',
 		peso: 7,
 		tipo: 'Gato',
-		duenio: 'Ramiro'
+		duenio: 'Ramiro',
 	},
-]
-
+];
 
 @Component({
 	selector: 'app-listado-mascotas',
 	templateUrl: './listado-mascotas.component.html',
-	styleUrls: ['./listado-mascotas.component.css']
+	styleUrls: ['./listado-mascotas.component.css'],
 })
-
-
 export class ListadoMascotasComponent implements AfterViewInit {
-	displayedColumns: string[] = ['tipo', 'nombre', 'duenio', 'edad', 'raza', 'color', 'peso', 'acciones'];
+	displayedColumns: string[] = [
+		'tipo',
+		'nombre',
+		'duenio',
+		'edad',
+		'raza',
+		'color',
+		'peso',
+		'acciones',
+	];
 	dataSource = new MatTableDataSource<Mascota>(listMascotas);
 	loading: boolean = false;
 
@@ -89,21 +93,20 @@ export class ListadoMascotasComponent implements AfterViewInit {
 		this.paginator._intl.itemsPerPageLabel = 'Items por página';
 	}
 
-
 	applyFilter(event: Event) {
 		const filterValue = (event.target as HTMLInputElement).value;
 		this.dataSource.filter = filterValue.trim().toLowerCase();
 	}
 
 	eliminarMascota() {
-		this.loading = true
+		this.loading = true;
 
 		setTimeout(() => {
 			this.loading = false;
-			this._snackBar.open('La mascota fue eliminada con éxito', '', { duration: 2000, horizontalPosition: 'right' })
-
-		}, 2000)
-
+			this._snackBar.open('La mascota fue eliminada con éxito', '', {
+				duration: 2000,
+				horizontalPosition: 'right',
+			});
+		}, 2000);
 	}
-
 }
