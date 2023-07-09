@@ -7,7 +7,7 @@
 
 
 
-<div class="container">
+<div *ngIf="this.dataSource.data.length > 0" class="container">
 	<mat-form-field>
 		<mat-label>Filtro</mat-label>
 		<input
