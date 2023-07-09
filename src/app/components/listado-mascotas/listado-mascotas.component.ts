@@ -13,18 +13,15 @@ import { MascotaService } from 'src/app/services/mascota.service';
 })
 export class ListadoMascotasComponent implements AfterViewInit, OnInit {
 	displayedColumns: string[] = [
-		'tipo',
 		'nombre',
-		'duenio',
-		'edad',
+		'tipo',
 		'raza',
-		'color',
-		'peso',
-		'acciones',
+		'duenio',
+		'acciones'
 	];
 
 	dataSource = new MatTableDataSource<Mascota>();
-	loading: boolean = false;
+	loading = false;
 
 	@ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -37,15 +34,15 @@ export class ListadoMascotasComponent implements AfterViewInit, OnInit {
 
 	ngOnInit(): void {
 		this.obtenerMascotas();
+
 	}
 
 	ngAfterViewInit(): void {
+		
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;
 
-		if (this.dataSource.data.length > 0) {
-			this.paginator._intl.itemsPerPageLabel = 'Items por página';
-		}
+		this.paginator._intl.itemsPerPageLabel = 'Items por página';
 	}
 
 	applyFilter(event: Event) {
@@ -61,7 +58,7 @@ export class ListadoMascotasComponent implements AfterViewInit, OnInit {
 				this.loading = false;
 				this.dataSource.data = data;
 			},
-			error: (e) => (this.loading = false),
+			error: (e) => this.loading = false,
 			complete: () => console.log('complete'),
 		});
 	}

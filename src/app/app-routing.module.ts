@@ -10,7 +10,7 @@ const routes: Routes = [
 	{ path: '', redirectTo: 'mascotas', pathMatch: 'full' },
 	{ path: 'mascotas', component: ListadoMascotasComponent },
 	{ path: 'agregar', component: AgregarEditarMascotaComponent },
-	{ path: 'mascota/:id', component: VerMascotaComponent },
+	{ path: 'verMascota/:id', component: VerMascotaComponent },
 	{ path: 'editar/:id', component: AgregarEditarMascotaComponent },
 	{ path: '**', redirectTo: 'mascotas', pathMatch: 'full' },
 ];

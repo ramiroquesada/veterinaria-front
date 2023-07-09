@@ -1,26 +1,28 @@
-<div class="title">
+<div class="title mat-elevation-z10">
 	<h1>Ver Mascota</h1>
 </div>
 
-<div class="container">
-
-	<mat-card class="card">
-		<mat-card-title>Milton</mat-card-title>
-		<mat-card-content>
-			<p><strong>Dueño:</strong>Rama</p>
-			<p><strong>Tipo:</strong>Gato</p>
-			<p><strong>Edad:</strong>4 años</p>
-			<p><strong>Raza:</strong>Callejero</p>
-			<p><strong>Color:</strong>Blanco</p>
-			<p><strong>Peso:</strong>8 Kg</p>
-		</mat-card-content>
-		<mat-card-actions>
-			<button
-				routerLink="/mascotas"
-				mat-raised-button
-				color="primary"
-			>Volver</button>
-		</mat-card-actions>
-	</mat-card>
+<div  class="container ">
+<div  *ngIf="mascota != null" class="containerWrapper">
+	
+		<div class="card mat-elevation-z10">
+			<h2>{{mascota.nombre}}</h2>
+			<div>
+				<p><strong>Dueño:</strong> {{mascota.duenio}}</p>
+				<p><strong>Tipo:</strong> {{mascota.tipo}}</p>
+				<p><strong>Edad:</strong> {{mascota.edad}} años</p>
+				<p><strong>Raza:</strong> {{mascota.raza}}</p>
+				<p><strong>Color:</strong> {{mascota.color}}</p>
+				<p><strong>Peso:</strong> {{mascota.peso}} Kg</p>
+			</div>
+			
+				<button
+					routerLink="/mascotas"
+					mat-raised-button
+					color="primary"
+				>Volver</button>
+			
+		</div>
+</div>
 
 </div>

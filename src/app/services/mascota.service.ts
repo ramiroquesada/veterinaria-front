@@ -19,4 +19,8 @@ export class MascotaService {
 		return this.http.get<Mascota[]>(`${this.myAppUrl}${this.myApiUrl}`)
 
 	}
+
+	getMascotaById(id: number): Observable<Mascota> {
+		return this.http.get<Mascota>(`${this.myAppUrl}${this.myApiUrl}/${id}`);
+	}
 }
