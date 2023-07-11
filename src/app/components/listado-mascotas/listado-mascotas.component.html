@@ -103,15 +103,15 @@
 							fontIcon="search"
 						></mat-icon>
 						<mat-icon
-							routerLink="/editar/1"
+							routerLink="/editar/{{ element.id }}"
 							matTooltip="Editar"
-							class="accionesBtn"
+							class="accionesBtn editBtn"
 							fontIcon="edit"
 						></mat-icon>
 						<mat-icon
-							(click)="eliminarMascota()"
+							(click)="eliminarMascota(element.id)"
 							matTooltip="Eliminar"
-							class="accionesBtn"
+							class="accionesBtn deleteBtn"
 							fontIcon="delete"
 						></mat-icon>
 

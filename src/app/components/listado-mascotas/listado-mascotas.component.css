@@ -23,6 +23,13 @@ th {
   line-height: 24px;
 }
 
+.editBtn{
+	color: rgb(42, 154, 219);
+}
+.deleteBtn{
+	color: rgb(219, 92, 42);
+}
+
 :host ::ng-deep .mat-sort-header-container {
   justify-content: center;
 }
