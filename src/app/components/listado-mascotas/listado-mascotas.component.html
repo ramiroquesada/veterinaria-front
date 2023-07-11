@@ -7,133 +7,139 @@
 
 
 
-<div
-	*ngIf="this.dataSource.data != null"
-	class="container"
->
+<div class="container">
 	<div class="containerWrapper">
 
-		<mat-form-field>
-			<mat-label>Filtro</mat-label>
-			<input
-				matInput
-				placeholder="Buscar"
-				#input
-				autocomplete="off"
-				(keyup)="applyFilter($event)"
+
+			<mat-form-field>
+				<mat-label>Filtro</mat-label>
+				<input
+					matInput
+					placeholder="Buscar"
+					#input
+					autocomplete="off"
+					(keyup)="applyFilter($event)"
+				>
+			</mat-form-field>
+
+			<table
+				mat-table
+				[dataSource]="dataSource"
+				class="mat-elevation-z10"
+				matSort
 			>
-		</mat-form-field>
 
-		<table
-			mat-table
-			[dataSource]="dataSource"
-			class="mat-elevation-z10"
-			matSort
-		>
+				<ng-container matColumnDef="nombre">
+					<th
+						mat-header-cell
+						*matHeaderCellDef
+						mat-sort-header="nombre"
+					>Nombre</th>
+					<td
+						mat-cell
+						*matCellDef="let element"
+					> {{element.nombre}} </td>
+				</ng-container>
 
-			<ng-container matColumnDef="nombre">
-				<th
-					mat-header-cell
-					*matHeaderCellDef
-					mat-sort-header="nombre"
-				>Nombre</th>
-				<td
-					mat-cell
-					*matCellDef="let element"
-				> {{element.nombre}} </td>
-			</ng-container>
-
-			<ng-container matColumnDef="tipo">
-				<th
-					mat-header-cell
-					*matHeaderCellDef
-					mat-sort-header="tipo"
-				>Tipo</th>
-				<td
-					mat-cell
-					*matCellDef="let element"
-				> {{element.tipo}} </td>
-			</ng-container>
+				<ng-container matColumnDef="tipo">
+					<th
+						mat-header-cell
+						*matHeaderCellDef
+						mat-sort-header="tipo"
+					>Tipo</th>
+					<td
+						mat-cell
+						*matCellDef="let element"
+					> {{element.tipo}} </td>
+				</ng-container>
 
 
-			<ng-container matColumnDef="duenio">
-				<th
-					mat-header-cell
-					*matHeaderCellDef
-					mat-sort-header="duenio"
-				>Dueño</th>
-				<td
-					mat-cell
-					*matCellDef="let element"
-				> {{element.duenio}} </td>
-			</ng-container>
+				<ng-container matColumnDef="duenio">
+					<th
+						mat-header-cell
+						*matHeaderCellDef
+						mat-sort-header="duenio"
+					>Dueño</th>
+					<td
+						mat-cell
+						*matCellDef="let element"
+					> {{element.duenio}} </td>
+				</ng-container>
 
 
-			<ng-container matColumnDef="raza">
-				<th
-					mat-header-cell
-					*matHeaderCellDef
-					mat-sort-header="raza"
-				>Raza</th>
-				<td
-					mat-cell
-					*matCellDef="let element"
-				> {{element.raza}} </td>
-			</ng-container>
+				<ng-container matColumnDef="raza">
+					<th
+						mat-header-cell
+						*matHeaderCellDef
+						mat-sort-header="raza"
+					>Raza</th>
+					<td
+						mat-cell
+						*matCellDef="let element"
+					> {{element.raza}} </td>
+				</ng-container>
 
 
-			<ng-container matColumnDef="acciones">
-				<th
-					mat-header-cell
-					*matHeaderCellDef
-				>
-					<button
-						[routerLink]="['/agregar']"
-						class="agregarBtn"
-						mat-raised-button
-						color="primary"
-					>Agregar</button>
-				</th>
-				<td
-					mat-cell
-					*matCellDef="let element"
-				>
-					<mat-icon
-						routerLink="/verMascota/{{ element.id }}"
-						matTooltip="Info"
-						class="accionesBtn"
-						fontIcon="search"
-					></mat-icon>
-					<mat-icon
-						routerLink="/editar/1"
-						matTooltip="Editar"
-						class="accionesBtn"
-						fontIcon="edit"
-					></mat-icon>
-					<mat-icon
-						(click)="eliminarMascota()"
-						matTooltip="Eliminar"
-						class="accionesBtn"
-						fontIcon="delete"
-					></mat-icon>
+				<ng-container matColumnDef="acciones">
+					<th
+						mat-header-cell
+						*matHeaderCellDef
+					>
+						<button
+							[routerLink]="['/agregar']"
+							class="agregarBtn"
+							mat-raised-button
+							color="primary"
+						>Agregar</button>
+					</th>
+					<td
+						mat-cell
+						*matCellDef="let element"
+					>
+						<mat-icon
+							routerLink="/verMascota/{{ element.id }}"
+							matTooltip="Info"
+							class="accionesBtn"
+							fontIcon="search"
+						></mat-icon>
+						<mat-icon
+							routerLink="/editar/1"
+							matTooltip="Editar"
+							class="accionesBtn"
+							fontIcon="edit"
+						></mat-icon>
+						<mat-icon
+							(click)="eliminarMascota()"
+							matTooltip="Eliminar"
+							class="accionesBtn"
+							fontIcon="delete"
+						></mat-icon>
 
-				</td>
-			</ng-container>
+					</td>
+				</ng-container>
 
-			<tr
-				mat-header-row
-				*matHeaderRowDef="displayedColumns"
-			></tr>
-			<tr
-				mat-row
-				*matRowDef="let row; columns: displayedColumns"
-			></tr>
-		</table>
+				<ng-container >
 
+					<tr
+					mat-header-row
+					*matHeaderRowDef="displayedColumns"
+					></tr>
+					<tr
+					mat-row
+					*matRowDef="let row; columns: displayedColumns"
+					></tr>
+					
+				</ng-container>
+
+			</table>
+		
+
+		<div>
 		<mat-paginator
 			showFirstLastButtons
 			[pageSizeOptions]="[5, 10, 20]"
-			aria-label="Select page "
+			aria-label="Select page"
 		></mat-paginator>
+	</div>
 	</div>
 </div>

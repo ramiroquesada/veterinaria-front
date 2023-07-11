@@ -1,17 +1,17 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Mascota } from 'src/app/interfaces/mascota';
+import { MascotaService } from 'src/app/services/mascota.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MascotaService } from 'src/app/services/mascota.service';
 
 @Component({
 	selector: 'app-listado-mascotas',
 	templateUrl: './listado-mascotas.component.html',
 	styleUrls: ['./listado-mascotas.component.css'],
 })
-export class ListadoMascotasComponent implements AfterViewInit, OnInit {
+export class ListadoMascotasComponent implements OnInit, AfterViewInit {
 	displayedColumns: string[] = [
 		'nombre',
 		'tipo',
@@ -20,8 +20,10 @@ export class ListadoMascotasComponent implements AfterViewInit, OnInit {
 		'acciones'
 	];
 
+	loading: boolean = false;
+
+
 	dataSource = new MatTableDataSource<Mascota>();
-	loading = false;
 
 	@ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -34,15 +36,13 @@ export class ListadoMascotasComponent implements AfterViewInit, OnInit {
 
 	ngOnInit(): void {
 		this.obtenerMascotas();
-
 	}
 
 	ngAfterViewInit(): void {
-		
-		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;
-
+		this.dataSource.paginator = this.paginator;
 		this.paginator._intl.itemsPerPageLabel = 'Items por página';
+
 	}
 
 	applyFilter(event: Event) {
@@ -53,15 +53,22 @@ export class ListadoMascotasComponent implements AfterViewInit, OnInit {
 	obtenerMascotas() {
 		this.loading = true;
 
+
 		this._mascotaService.getMascotas().subscribe({
 			next: (data) => {
-				this.loading = false;
 				this.dataSource.data = data;
+				this.loading = false;
+
+
 			},
-			error: (e) => this.loading = false,
-			complete: () => console.log('complete'),
-		});
+			error: (e) => { this.loading = false },
+			complete: () => {
+				return
+			}
+		})
+
 	}
+
 
 	eliminarMascota() {
 		this.loading = true;

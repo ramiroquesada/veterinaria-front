@@ -9,9 +9,10 @@ import { Mascota } from '../../interfaces/mascota';
 	styleUrls: ['./ver-mascota.component.css']
 })
 export class VerMascotaComponent implements OnInit {
-	loading = false;
-	id: number;
+	loading: boolean = false;
+	id!: number;
 	mascota!: Mascota;
+	mascotaFetchFailed: boolean = false
 
 	constructor(private _mascotaService: MascotaService,
 		private aRoute: ActivatedRoute) {
@@ -20,9 +21,6 @@ export class VerMascotaComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.obtenerMascota();
-		// this.aRoute.params.subscribe(data=>{
-		// 	console.log(data)
-		// })
 	}
 
 	obtenerMascota() {
@@ -30,11 +28,14 @@ export class VerMascotaComponent implements OnInit {
 
 		this._mascotaService.getMascotaById(this.id).subscribe({
 			next: (data) => {
-				this.loading = false;
 				this.mascota = data;
+				this.loading = false;
 			},
-			error: () => this.loading = false,
-			complete: () => {return}
+			error: () => {
+				this.loading = false;
+				this.mascotaFetchFailed = true;
+			},
+			complete: () => { return }
 		});
 	}
 

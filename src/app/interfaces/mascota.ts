@@ -6,5 +6,5 @@ export interface Mascota {
 	raza: string,
 	edad: number,
 	peso: number,
-	color: string,
+	color: string
 }

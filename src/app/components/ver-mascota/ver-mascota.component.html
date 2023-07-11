@@ -2,9 +2,12 @@
 	<h1>Ver Mascota</h1>
 </div>
 
-<div  class="container ">
-<div  *ngIf="mascota != null" class="containerWrapper">
-	
+<div class="container ">
+	<div
+		*ngIf="mascota != null"
+		class="containerWrapper"
+	>
+
 		<div class="card mat-elevation-z10">
 			<h2>{{mascota.nombre}}</h2>
 			<div>
@@ -15,14 +18,32 @@
 				<p><strong>Color:</strong> {{mascota.color}}</p>
 				<p><strong>Peso:</strong> {{mascota.peso}} Kg</p>
 			</div>
-			
-				<button
-					routerLink="/mascotas"
-					mat-raised-button
-					color="primary"
-				>Volver</button>
-			
+
+			<button
+				routerLink="/mascotas"
+				mat-raised-button
+				color="primary"
+			>Volver</button>
+
 		</div>
-</div>
+	</div>
+
+	<div
+		*ngIf="mascotaFetchFailed"
+		class="containerWrapper"
+	>
+
+		<div class="card mat-elevation-z10">
+
+			<h3>Error al cargar la mascota</h3>
+
+			<button
+				routerLink="/mascotas"
+				mat-raised-button
+				color="primary"
+			>Volver</button>
+
+		</div>
+	</div>
 
 </div>
