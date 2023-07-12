@@ -31,7 +31,7 @@ export class ListadoMascotasComponent implements OnInit, AfterViewInit {
 
 	constructor(
 		private _snackBar: MatSnackBar,
-		private _mascotaService: MascotaService
+		private _mascotaService: MascotaService,
 	) { }
 
 	ngOnInit(): void {
@@ -41,8 +41,6 @@ export class ListadoMascotasComponent implements OnInit, AfterViewInit {
 	ngAfterViewInit(): void {
 		this.dataSource.sort = this.sort;
 		this.dataSource.paginator = this.paginator;
-		this.paginator._intl.itemsPerPageLabel = 'Items por página';
-
 	}
 
 	applyFilter(event: Event) {
